@@ -68,7 +68,7 @@
     <modules>
         <module>cli</module>
         <module>data</module>
-        <module>frontend</module>
+        <!--<module>frontend</module>-->
         <module>server</module>
     </modules>
 
