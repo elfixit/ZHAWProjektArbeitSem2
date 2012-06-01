@@ -13,6 +13,9 @@ import com.sun.jersey.api.container.grizzly2.GrizzlyServerFactory;
 import com.sun.jersey.api.core.ResourceConfig;
 import org.glassfish.grizzly.http.server.HttpServer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
@@ -24,13 +27,27 @@ public class Main {
     }
 
     public static final URI BASE_URI = getBaseURI();
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
+    /**
+     * @return
+     */
     protected static MessageController initMessageController() {
+    	logger.debug("First initialisation of the MessageController, just for that that it is done.. ;-)");
         MessageController controller = MessageController.Instance();
         return controller;
     }
 
+    /**
+     * Erste initialisierung der MessageHandlerFactory. 
+     * registriert die MessageHandlers:
+     *   * Email: EMailMessageHandler
+     *   * SMS: SMSMessageHandler
+     *   * MMS: MMSMessageHandler
+     *   * Print: PrintMessageHandler
+     */
     protected static void setupMessageHandlerFactory() {
+    	logger.debug("Setup MessageHandlerFactory with the classes");
         MessageHandlerFactory factory = MessageHandlerFactory.instance();
         factory.registerMessageHandler("Email", EMailMessageHandler.class);
         factory.registerMessageHandler("SMS", SMSMessageHandler.class);
@@ -38,19 +55,28 @@ public class Main {
         factory.registerMessageHandler("Print", PrintMessageHandler.class);
     }
 
+    /**
+     * @return
+     * @throws IOException
+     */
     protected static HttpServer startServer() throws IOException {
-        System.out.println("Starting Message Server...");
+        logger.info("Starting Http Message Server...");
         MessageApplication ma = new MessageApplication();
         return GrizzlyServerFactory.createHttpServer(BASE_URI, ma);
     }
 
+    /**
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
-    	MessageController controller = initMessageController();
+    	logger.info("PWorkSem2 Server starting");
+    	initMessageController();
     	setupMessageHandlerFactory();
         HttpServer httpServer = startServer();
-        System.out.println(String.format("Jersey app started with WADL available at "
-                + "%sapplication.wadl\nTry out %smessages\nHit enter to stop it...",
-                BASE_URI, BASE_URI));
+        logger.info("Jersey app started with WADL available at {}application.wadl", BASE_URI);
+        logger.info("Try out {}messages", BASE_URI);
+        logger.info("Hit enter to stop it...");
         System.in.read();
         httpServer.stop();
     }

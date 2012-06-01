@@ -4,4 +4,6 @@
 *.jar
 *.war
 *.ear
-*target/**
+/server/target/*
+/cli/target/*
+/data/target/*
