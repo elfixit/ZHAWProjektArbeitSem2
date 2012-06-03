@@ -51,7 +51,7 @@
       <url>git@github.com:elfixit/ProjektArbeit.git</url>
       <connection>ssh+git</connection>
     </scm>
-    <name>Projekt Semester 2. Gehring, Marthaler - Server</name>
+    <name>Projekt Semester 2. Gehring, Marthaler,Brügger - Server</name>
     <description>
         Die Projektarbeit des 2. Semesters ZHAW Stadt Zürich Informatik
     </description>
