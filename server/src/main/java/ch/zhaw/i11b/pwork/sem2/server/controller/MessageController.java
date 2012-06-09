@@ -28,6 +28,9 @@ public class MessageController {
 		return _instance;
 	}
 	
+	/**
+	 * 
+	 */
 	protected MessageController() {
 		// add a empty message to cancled for debug purpos
 		this.messages.cancled.add(new Message());
@@ -43,6 +46,9 @@ public class MessageController {
 	protected HashMap<String, Timer> timers = new HashMap<String, Timer>();
 	
 	//public Interface
+	/**
+	 * @param msg
+	 */
 	public synchronized void addMessage(Message msg) {
 		msg.id = UUID.randomUUID().toString();
 		if (msg.sendtime == null) {
@@ -59,10 +65,14 @@ public class MessageController {
 			timer.schedule(reminderTask, cal.getTime());
 			this.openTasks.put("reminder_"+msg.id, reminderTask);
 		}
+		this.messages.open.add(msg);
 		this.openTasks.put(msg.id, task);
 		this.timers.put(msg.id, timer);
 	}
 	
+	/**
+	 * @param msg
+	 */
 	protected synchronized void clearMessage(Message msg) {
 		Timer timer = this.timers.get(msg.id);
 		timer.cancel();
@@ -75,16 +85,25 @@ public class MessageController {
 		this.messages.open.remove(msg);
 	}
 	
+	/**
+	 * @param msg
+	 */
 	public synchronized void finishMessage(Message msg) {
 		this.clearMessage(msg);
 		this.messages.finished.add(msg);
 	}
 
+	/**
+	 * @param msg
+	 */
 	public synchronized void errorMessage(Message msg) {
 		this.clearMessage(msg);
 		this.messages.errors.add(msg);
 	}
 	
+	/**
+	 * @param msg
+	 */
 	public synchronized void cancleMessage(Message msg) {
 		this.clearMessage(msg);
 		this.messages.cancled.add(msg);
