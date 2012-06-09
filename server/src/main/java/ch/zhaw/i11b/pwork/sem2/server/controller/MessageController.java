@@ -10,8 +10,15 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.UUID;
 
+/**
+ * @author  oups
+ */
 public class MessageController {
 	//Singleton impl
+	/**
+	 * @uml.property  name="_instance"
+	 * @uml.associationEnd  
+	 */
 	static protected MessageController _instance = null;
 	
 	static public MessageController Instance() {
@@ -27,6 +34,10 @@ public class MessageController {
 	}
 	
 	
+	/**
+	 * @uml.property  name="messages"
+	 * @uml.associationEnd  
+	 */
 	protected Messages messages = new Messages();
 	protected HashMap<String, MessageTask> openTasks = new HashMap<String, MessageTask>();
 	protected HashMap<String, Timer> timers = new HashMap<String, Timer>();
@@ -79,6 +90,10 @@ public class MessageController {
 		this.messages.cancled.add(msg);
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="messages"
+	 */
 	public synchronized Messages getMessages() {
 		return this.messages;
 	}

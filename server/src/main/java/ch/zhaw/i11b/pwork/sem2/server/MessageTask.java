@@ -10,8 +10,15 @@ import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.beans.Target;
 
 
+/**
+ * @author  oups
+ */
 public class MessageTask extends TimerTask {
 	protected List<IMessageHandler> messageHandlers = new ArrayList<IMessageHandler>();
+	/**
+	 * @uml.property  name="msg"
+	 * @uml.associationEnd  
+	 */
 	protected Message msg = null;
 	protected boolean is_reminder = false;
 	

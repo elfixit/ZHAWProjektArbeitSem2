@@ -14,6 +14,10 @@ import ch.zhaw.i11b.pwork.sem2.beans.Target;
 /**
  * @author  oups
  */
+/**
+ * @author oups
+ *
+ */
 public class MessageHandlerFactory {
 
 	/**
