@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="messagehandlers" size="1252,550" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers" metadata="uml2-1.0" initialized="true" scrolledY="203" tag="1000" key="32303037303533312D31303030207365727665722F6F757073">
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.4/@sourceConnections.0 //@children.4/@sourceConnections.1" name="IMessageHandler" location="413,50" size="170,80" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/IMessageHandler" runTimeClassModel="send()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="59,18">
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/IMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SMSMessageHandler" location="747,315" size="197,85" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/SMSMessageHandler" runTimeClassModel="send(),SMSMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="151,36">
+      <children xsi:type="editmodel:MethodEditModel" name="SMSMessageHandler" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/SMSMessageHandler#SMSMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/SMSMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/SMSMessageHandler-Standard::Derive->ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="50,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,4" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="225,85"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler&lt;-ch.zhaw.i11b.pwork.sem2.server.messagehandlers/SMSMessageHandler" source="//@children.1" target="//@children.3/@sourceConnections.1" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="98,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="EMailMessageHandler" location="512,315" size="205,85" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/EMailMessageHandler" runTimeClassModel="EMailMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;),send()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="155,36">
+      <children xsi:type="editmodel:MethodEditModel" name="EMailMessageHandler" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/EMailMessageHandler#EMailMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/EMailMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/EMailMessageHandler-Standard::Derive->ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="50,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="178,85"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler&lt;-ch.zhaw.i11b.pwork.sem2.server.messagehandlers/EMailMessageHandler" source="//@children.2" target="//@children.3/@sourceConnections.1" targetEnd="//@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="102,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MMSMessageHandler" location="50,315" size="201,85" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/MMSMessageHandler" runTimeClassModel="send(),MMSMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="152,36">
+      <children xsi:type="editmodel:MethodEditModel" name="MMSMessageHandler" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/MMSMessageHandler#MMSMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/MMSMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/MMSMessageHandler-Standard::Derive->ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="50,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="201,3" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="3,85"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.2/@sourceConnections.1 //@children.1/@sourceConnections.1" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler&lt;-ch.zhaw.i11b.pwork.sem2.server.messagehandlers/MMSMessageHandler" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.1/@children.1" sourceEnd="//@children.3/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="194,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,78" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.3/@sourceConnections.1 //@children.5/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.1/@sourceConnections.0" name="AbstractMessageHandler" location="383,180" size="229,85" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" runTimeClassModel="send(),AbstractMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="173,36">
+      <children xsi:type="editmodel:MethodEditModel" name="AbstractMessageHandler" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler#AbstractMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler-Soyatec::Implement->ch.zhaw.i11b.pwork.sem2.server.messagehandlers/IMessageHandler" source="//@children.4" target="//@children.0" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Implement»" size="74,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="114,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,80"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/IMessageHandler&lt;-ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" source="//@children.4" target="//@children.0" targetEnd="//@children.4/@sourceConnections.1/@children.1" sourceEnd="//@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="134,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="104,80"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PrintMessageHandler" location="281,315" size="201,85" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/PrintMessageHandler" runTimeClassModel="send(),PrintMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="152,36">
+      <children xsi:type="editmodel:MethodEditModel" name="PrintMessageHandler" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/PrintMessageHandler#PrintMessageHandler(Ljava.lang.String;Lch.zhaw.i11b.pwork.sem2.beans.Message;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="send" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/PrintMessageHandler#send()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/PrintMessageHandler-Standard::Derive->ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="50,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="151,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,85"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ch.zhaw.i11b.pwork.sem2.server.messagehandlers/AbstractMessageHandler&lt;-ch.zhaw.i11b.pwork.sem2.server.messagehandlers/PrintMessageHandler" source="//@children.5" target="//@children.3/@sourceConnections.1" targetEnd="//@children.5/@sourceConnections.1/@children.1" sourceEnd="//@children.5/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="100,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>
