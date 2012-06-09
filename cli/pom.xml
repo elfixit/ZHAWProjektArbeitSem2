@@ -94,7 +94,17 @@
                   <groupId>ch.zhaw.i11b.pwork.sem2</groupId>
                   <artifactId>pworksem2-data</artifactId>
                   <version>0.1</version>
-                </dependency>
+				</dependency>
+				<dependency>
+                  <groupId>com.googlecode.libphonenumber</groupId>
+                  <artifactId>libphonenumber</artifactId>
+                  <version>4.8</version>
+				</dependency>
+				<dependency>
+                	<groupId>javax.mail</groupId>
+                 	<artifactId>mail</artifactId>
+                 	<version>1.4.5</version>
+				</dependency>
             </dependencies>
         </profile>
         <profile>
@@ -103,6 +113,16 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
+   	         	<dependency>
+                	 <groupId>com.googlecode.libphonenumber</groupId>
+                 	<artifactId>libphonenumber</artifactId>
+                 	<version>4.8</version>
+				</dependency>
+				<dependency>
+	                <groupId>javax.mail</groupId>
+                 	<artifactId>mail</artifactId>
+                 	<version>1.4.5</version>
+                </dependency> 	
                 <dependency>
                     <groupId>com.sun.jersey</groupId>
                     <artifactId>jersey-grizzly2</artifactId>
@@ -117,7 +137,6 @@
                     <groupId>com.sun.jersey</groupId>
                     <artifactId>jersey-client</artifactId>
                     <version>1.12</version>
-                    <scope>test</scope>
                 </dependency>
                 <dependency>
                   <groupId>ch.zhaw.i11b.pwork.sem2</groupId>
@@ -158,7 +177,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.sun.jersey.samples.jsonfromjaxb.Main</mainClass>
+                    <mainClass>ch.zhaw.i11b.pwork.sem2.cli.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
