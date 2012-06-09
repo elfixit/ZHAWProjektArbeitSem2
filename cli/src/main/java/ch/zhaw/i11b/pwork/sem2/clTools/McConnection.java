@@ -1,6 +1,6 @@
 package ch.zhaw.i11b.pwork.sem2.clTools;
 
-import java.util.Date;
+//import java.util.Date;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -55,10 +55,10 @@ public class McConnection {
 			IO.mcNotify("Cannot send message, target missing");
 			return false;
 		}
-		else if(m.sendtime.before(new Date())){
-			IO.mcNotify("Cannot send message in the past");
-			return false;
-		}
+		//else if(m.sendtime.before(new Date())){
+		//	IO.mcNotify("Cannot send message in the past");
+		//	return false;
+		//}
 		else{
 			boolean succ;
 			try{
