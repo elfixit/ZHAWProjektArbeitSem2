@@ -17,7 +17,7 @@ go to server
 
 mvn test - runs junit tests
 
-mvn exec:exec - runs the server
+mvn exec:java - runs the server
 
  
 

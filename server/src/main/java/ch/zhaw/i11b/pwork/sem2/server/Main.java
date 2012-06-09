@@ -56,6 +56,7 @@ public class Main {
     }
 
     /**
+     * Code for create the HttpServer
      * @return
      * @throws IOException
      */
@@ -66,6 +67,7 @@ public class Main {
     }
 
     /**
+     * The normal main method.. starts the server.. and makes some blabla..
      * @param args
      * @throws IOException
      */
