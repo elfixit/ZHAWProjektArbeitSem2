@@ -65,6 +65,7 @@ public class MessageController {
 			timer.schedule(reminderTask, cal.getTime());
 			this.openTasks.put("reminder_"+msg.id, reminderTask);
 		}
+		this.messages.open.add(msg);
 		this.openTasks.put(msg.id, task);
 		this.timers.put(msg.id, timer);
 	}
