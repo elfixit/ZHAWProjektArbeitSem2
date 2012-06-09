@@ -26,6 +26,9 @@ public class MessageHandlerFactory {
 	 */
 	static private MessageHandlerFactory _instance = null;
 	
+	/**
+	 * @return
+	 */
 	static public MessageHandlerFactory instance() {
 		if (_instance == null) {
 			_instance = new MessageHandlerFactory();
@@ -38,10 +41,19 @@ public class MessageHandlerFactory {
 	protected HashMap<String, Class<AbstractMessageHandler>> types = new HashMap<String, Class<AbstractMessageHandler>>();
 	
 	
+	/**
+	 * @param type
+	 * @return
+	 */
 	public synchronized Class<AbstractMessageHandler> getClassForType(String type) {
 		return this.types.get(type);
 	}
 	
+	/**
+	 * @param target
+	 * @param msg
+	 * @return
+	 */
 	public synchronized IMessageHandler getMessageHandler(Target target, Message msg) {
 		try {
 			Class<AbstractMessageHandler> cls = this.getClassForType(target.type);
@@ -70,6 +82,10 @@ public class MessageHandlerFactory {
 		return null;
 	}
 	
+	/**
+	 * @param type
+	 * @param cls
+	 */
 	public synchronized void registerMessageHandler(String type, Class cls) {
 		this.types.put(type, cls);
 	}

@@ -22,6 +22,10 @@ public class MessageTask extends TimerTask {
 	protected Message msg = null;
 	protected boolean is_reminder = false;
 	
+	/**
+	 * @param msg
+	 * @param reminder
+	 */
 	public MessageTask(Message msg, boolean reminder) {
 		this.msg = msg;
 		this.is_reminder = reminder;
@@ -34,18 +38,31 @@ public class MessageTask extends TimerTask {
 			}
 		}
 	}
+	
+	/**
+	 * @param msg
+	 */
 	public MessageTask(Message msg) {
 		this(msg, false);
 	}
 	
+	/**
+	 * @return
+	 */
 	public Message getMessage() {
 		return this.msg;
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean isReminder() {
 		return this.is_reminder;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.util.TimerTask#run()
+	 */
 	@Override
 	public void run() {
 		MessageController controller = null;
