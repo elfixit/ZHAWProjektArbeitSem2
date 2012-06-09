@@ -4,6 +4,11 @@ import javax.mail.internet.AddressException;
 import com.google.i18n.phonenumbers.*;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+
+/**
+ * Validation of email address and phone number
+ * @author boffel
+ */
 public class Valid {
 	
 	public static boolean emailValid(String email){

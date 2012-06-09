@@ -6,7 +6,10 @@ import java.util.List;
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.test.*;
 
-
+/**
+ * menu tools, show menu, process input
+ * @author boffel
+ */
 public class Menu {
 	/**
 	 * welcome menu options
