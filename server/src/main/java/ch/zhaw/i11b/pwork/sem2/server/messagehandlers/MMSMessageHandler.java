@@ -22,7 +22,7 @@ public class MMSMessageHandler extends AbstractMessageHandler {
 	 */
 	public boolean send() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

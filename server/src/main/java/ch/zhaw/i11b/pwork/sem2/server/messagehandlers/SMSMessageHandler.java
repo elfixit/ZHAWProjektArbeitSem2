@@ -24,7 +24,7 @@ public class SMSMessageHandler extends AbstractMessageHandler {
 	 */
 	public boolean send() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
