@@ -87,7 +87,9 @@ public class Menu {
 			}
 			else if(in.matches("s")){
 				IO.mcAccpt(mainO.get(in));
-				McConnection.instance().sendMess(mess);
+				if(McConnection.instance().sendMess(mess)){
+					break;
+				}
 			}
 			else if(in.matches("n")){
 				IO.mcAccpt(mainO.get(in));

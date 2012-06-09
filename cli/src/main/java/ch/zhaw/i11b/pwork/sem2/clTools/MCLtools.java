@@ -56,22 +56,12 @@ public class MCLtools {
 	// Set sender:
 	protected static void setFrom(Message m){
 		
-		String in = IO.getStdin("To you want to leave a phone Nr. [p] or email adress [e]?");
-		if(in.matches("e")){
-			in = readEmail();
-			if(!(in.isEmpty())){
-				m.from = in;
-				return;
-			}
-		} 
-		else if(in.matches("p")){	
-			in = readNr();
-			if(!(in.isEmpty())){
-				m.from = in;
-				return;
-			}	
+		String in = readEmail();
+		if(!(in.isEmpty())){
+			m.from = in;
+		} else{
+			IO.mcInfo("No recipient added.");
 		}
-		IO.mcInfo("No recipient added.");
 	}
 	
 	protected static void setContent(Message m){
