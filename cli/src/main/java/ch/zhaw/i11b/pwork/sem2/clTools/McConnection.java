@@ -1,11 +1,13 @@
 package ch.zhaw.i11b.pwork.sem2.clTools;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
+import ch.zhaw.i11b.pwork.sem2.beans.Messages;
 import ch.zhaw.i11b.pwork.sem2.beans.config.JAXBContextResolver;
 
 import com.sun.jersey.api.client.Client;
@@ -14,9 +16,13 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 
+/**
+ * Establish connection and send message
+ */
 public class McConnection {
 
 	private WebResource r;
+	private Messages ms;
 	
 	/**
 	 * Singleton instance..
@@ -42,6 +48,9 @@ public class McConnection {
     	r = c.resource(UriBuilder.fromUri("http://localhost/").port(9998).build());
 	}
 	
+	/**
+	 * If all required message details are filled send message
+	 */
 	protected boolean sendMess(Message m){
 		if(m.from.isEmpty()){
 			IO.mcNotify("Cannot send message, sender miising");
@@ -72,6 +81,26 @@ public class McConnection {
 			return succ;
 			
 		}
+	}
+
+	protected List<Message> getFailed(){
+			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
+			return ms.errors;
+	}
+
+	protected List<Message> getCancelled(){
+			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
+			return ms.cancled;
+	}
+
+	protected List<Message> getFinished(){
+			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
+			return ms.finished;
+	}
+
+	protected List<Message> getOpened(){
+			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
+			return ms.open;
 	}
 	
 }

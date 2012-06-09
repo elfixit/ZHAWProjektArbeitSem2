@@ -2,12 +2,15 @@ package ch.zhaw.i11b.pwork.sem2.clTools;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.test.*;
 
 
 public class Menu {
-	// welcome menu options
+	/**
+	 * welcome menu options
+	 */
 	protected static final Map<String, String> nullO = new HashMap<String, String>(){
 		{
 		put("n", "[n] create a new message");
@@ -16,7 +19,9 @@ public class Menu {
 		}
 	};
 
-	// main menu options:
+	/**
+	 * main menu options:
+	 */
 	protected static final Map<String, String> mainO = new HashMap<String, String>(){
 		{
 		put("e", "[e] edit sender");
@@ -31,11 +36,26 @@ public class Menu {
 		put("t", "[t] set test values");
 		}
 	};
+
+	/**
+	 * welcome menu options
+	 */
+	protected static final Map<String, String> statusO = new HashMap<String, String>(){
+		{
+		put("f", "[f] view finished messages");
+		put("e", "[e] view failed messages");
+		put("o", "[o] view opened messages");
+		put("c", "[c] view canceled messages");
+		put("q", "[q] quit");
+		}
+	};
 	
 	
+	/**
+	 * start menu when no instance of Message class is available
+	 */
 	protected static boolean nullMenu(){
 		IO.mcBr();
-		
 		// get input:
 		for(String in = ioMenu("null");; in = ioMenu("null")){
 			
@@ -44,6 +64,7 @@ public class Menu {
 			}
 			else if(in.matches("v")){
 				IO.mcAccpt(nullO.get(in));
+				statusMenu();
 			}
 			else if(in.matches("q")){	
 				IO.mcAccpt(nullO.get(in));
@@ -54,12 +75,12 @@ public class Menu {
 			}
 		}
 	}
-
 	
+	/**
+	 * work with Message class and send message when all is fine
+	 */
 	protected static void mainMenu(Message mess){
-		
-
-//		// get input:
+		// get input:
 		for(String in = ioMenu("main");; in = ioMenu("main")){
 			if(in.matches("e")){
 				IO.mcAccpt(mainO.get(in));
@@ -112,9 +133,77 @@ public class Menu {
 			}
 		}
 	}
-	// print menu:
+	
+	/**
+	 *  status menu view finished, failed, canceled or open messages 
+	 */
+	protected static void statusMenu(){
+		IO.mcBr();
+		// get input:
+		for(String in = ioMenu("status");; in = ioMenu("status")){
+			
+			if(in.matches("f")){
+				IO.mcAccpt(statusO.get(in));
+				List<Message> ml = McConnection.instance().getFinished();
+				if(ml.isEmpty()){
+					IO.mcRespond("No finished messages");
+				}
+				else{
+					for(Message m : ml){
+						MCLtools.prntMcMess(m);
+					}
+				}
+			}
+			else if(in.matches("e")){
+				IO.mcAccpt(statusO.get(in));
+				List<Message> ml = McConnection.instance().getFailed();
+				if(ml.isEmpty()){
+					IO.mcRespond("No failed messages");
+				}
+				else{
+					for(Message m : ml){
+						MCLtools.prntMcMess(m);
+					}
+				}
+			}
+			else if(in.matches("o")){	
+				IO.mcAccpt(statusO.get(in));
+				List<Message> ml = McConnection.instance().getOpened();
+				if(ml.isEmpty()){
+					IO.mcRespond("No open messages");
+				}
+				else{
+					for(Message m : ml){
+						MCLtools.prntMcMess(m);
+					}
+				}
+			}
+			else if(in.matches("c")){	
+				IO.mcAccpt(statusO.get(in));
+				List<Message> ml = McConnection.instance().getCancelled();
+				if(ml.isEmpty()){
+					IO.mcRespond("No cancelled messages");
+				}
+				else{
+					for(Message m : ml){
+						MCLtools.prntMcMess(m);
+					}
+				}
+			}
+			else if(in.matches("q")){
+				IO.mcInfo("quit");
+				break;
+			}
+			else{
+				IO.mcNotify(in +" is not a valid option.");
+			}
+		}
+	}
+
+	/**
+	 * print null- or main menu
+	 */
 	public static String ioMenu(String menu){
-		
 		
 		if(menu.matches("main")){
 			IO.mcBr();
@@ -129,6 +218,15 @@ public class Menu {
 			IO.mcBr();
 			IO.mcInfo("Menu");
 			for(String str : nullO.values()){
+				IO.mcRespond(str);
+			}
+			return IO.getStdin("");
+		}
+		
+		else if(menu.matches("status")){
+			IO.mcBr();
+			IO.mcInfo("Status");
+			for(String str : statusO.values()){
 				IO.mcRespond(str);
 			}
 			return IO.getStdin("");

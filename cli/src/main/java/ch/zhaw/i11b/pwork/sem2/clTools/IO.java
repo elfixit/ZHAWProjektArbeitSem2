@@ -5,9 +5,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * read stdin and format stdout output
+ */
 public class IO{
 	
-	// get standard input:
+	/**
+	 * Print request and get answer
+	 */
 	public static String getStdin(String prompt) {
 
 		String nr = "foo";
@@ -27,7 +32,10 @@ public class IO{
 		return nr;
 	}
 	
-	// action wise output:
+	/**
+	 * action wise output:
+	 */
+
 	public static void mcWelcome(){
 		IO.mcNotify("Welcome to MultiChannel !");
 	}

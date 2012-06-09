@@ -8,19 +8,22 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import ch.zhaw.i11b.pwork.sem2.beans.*;
-import ch.zhaw.i11b.pwork.sem2.datAdmin.Valid;
 
 
 public class MCLtools {
 	
-	// Start MultiChannel client:
+	/**
+	 * Start MultiChannel client:
+	 */
 	public static void go(){
 		IO.mcWelcome();
 		while(cycle());
 		IO.mcBye();
 	}
 	
-	// life cycle of MultiChannel:
+	/**
+	 * life cycle of MultiChannel:
+	 */
 	public static boolean cycle(){
 		if(Menu.nullMenu()){
 			Message mess = MCLtools.newMess();
@@ -31,7 +34,9 @@ public class MCLtools {
 		
 	}
 	
-	// Create new MultiChannel mess:
+	/**
+	 * Create new MultiChannel mess:
+	 */
 	public static Message newMess(){
 		Message nm = new Message();
 		initMess(nm);
@@ -42,7 +47,9 @@ public class MCLtools {
 		return nm;
 	}
 	
-	// initialize MultiChannel settings:
+	/**
+	 * Initialize empty message
+	 */
 	protected static void initMess(Message m){
 		m.from = "";
 		m.message = "";
@@ -51,9 +58,9 @@ public class MCLtools {
 		m.reminder = false;
 	}
 	
-	
-
-	// Set sender:
+	/**
+	 * Set sender:
+	 */
 	protected static void setFrom(Message m){
 		
 		String in = readEmail();
@@ -64,10 +71,16 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * Set content
+	 */
 	protected static void setContent(Message m){
 		m.message = readMess();
 	}
 	
+	/**
+	 * Add target
+	 */
 	protected static boolean addTarget(Message m){
 		String in = IO.getStdin("To you want to add SMS [s], MMS [m] or email [e]?");
 		if(in.matches("e")){
@@ -98,6 +111,9 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * set Date 
+	 */
 	protected static void setDate(Message m){
 		Date newDate = readDate();
 		if(newDate == null){
@@ -107,6 +123,9 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * Toggle reminder 
+	 */
 	protected static void toggleRem(Message m){
 		if(m.reminder){
 			m.reminder = false;
@@ -116,6 +135,9 @@ public class MCLtools {
 		}
 	}	
 
+	/**
+	 * Get email from cmd line 
+	 */
 	private static String readEmail(){
 		String in = IO.getStdin("Enter your email adress:");
 		if(Valid.emailValid(in)){
@@ -126,6 +148,9 @@ public class MCLtools {
 		}
 	}
 
+	/**
+	 * Get phone nr from cmd line 
+	 */
 	private static String readNr(){
 		
 		String countryCode = Valid.ccValid(IO.getStdin("Enter country code. eg \"0041\" for Switzerland:"));
@@ -144,6 +169,9 @@ public class MCLtools {
 		return "";
 	}
 	
+	/**
+	 * Get date from cmd line 
+	 */
 	@SuppressWarnings("finally")
 	private static Date readDate(){
 		Date newDate = new Date();
@@ -160,10 +188,17 @@ public class MCLtools {
 		
 	}
 	
+	/**
+	 * Get content from cmd line 
+	 */
 	private static String readMess(){
 		String mess = IO.getStdin("Enter your Message and hit [Enter] ");
 		return mess; 
 	}
+
+	/**
+	 * print sender to  stdout
+	 */
 	private static void prntFrom(Message m){
 		if(m.from.isEmpty()){
 			IO.mcNotify("Recipient empty");
@@ -172,6 +207,9 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * print content to  stdout
+	 */
 	private static void prntMess(Message m){
 		if(m.message.isEmpty()){
 			IO.mcNotify("Message empty");
@@ -180,6 +218,9 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * print content to  stdout
+	 */
 	private static void prntTargets(Message m){
 		if(m.targets.isEmpty()){
 			IO.mcNotify("Targets: empty.");
@@ -192,6 +233,10 @@ public class MCLtools {
 			prntTargetOfType(m.targets, "Print");
 		}
 	}
+
+	/**
+	 * print targets to  stdout
+	 */
 	private static void prntTargetOfType(List<Target> targets, String type){
 		String items = "";
 		for(Target t : targets){
@@ -206,6 +251,9 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * print date to  stdout
+	 */
 	private static void prntDate(Message m){
 		if(m.sendtime == null){
 			IO.mcNotify("Date: empty.");
@@ -215,10 +263,16 @@ public class MCLtools {
 		}
 	}
 	
+	/**
+	 * print reminder to  stdout
+	 */
 	private static void prntRem(Message m){
 		IO.mcRespond("Reminder: "+ m.reminder);
 	}
 	
+	/**
+	 * print all message details to  stdout
+	 */
 	public static void prntMcMess(Message m){
 		prntFrom(m);
 		prntMess(m);

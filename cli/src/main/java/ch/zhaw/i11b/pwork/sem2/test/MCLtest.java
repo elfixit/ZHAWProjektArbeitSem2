@@ -8,12 +8,15 @@ import ch.zhaw.i11b.pwork.sem2.beans.Target;
 public class MCLtest {
 
 	/**
-	 * @param args
+	 * Run McClient
 	 */
 	public static void main(final String[] args) {
 		MCLtools.go();
 	}
 	
+	/**
+	 * Add test targets
+	 */
 	public static void addTestValues(Message m){
 		m.targets.add(new Target("SMS", "+41 593 571 12 02"));
 	      m.targets.add(new Target("SMS", "+0 079 571 45 02"));
