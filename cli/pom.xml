@@ -176,7 +176,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>ch.zhaw.i11b.pwork.sem2.cli.Main</mainClass>
+                    <mainClass>ch.zhaw.i11b.pwork.sem2.test.MCLtest</mainClass>
                 </configuration>
             </plugin>
             <plugin>

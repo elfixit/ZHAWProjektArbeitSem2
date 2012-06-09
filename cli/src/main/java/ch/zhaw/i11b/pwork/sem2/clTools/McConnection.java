@@ -18,8 +18,15 @@ public class McConnection {
 
 	private WebResource r;
 	
+	/**
+	 * Singleton instance..
+	 */
 	static private McConnection _instance = null;
 	
+	/**
+	 * Singleton Impl
+	 * @return McConnection
+	 */
 	static public McConnection instance() {
 		if (_instance == null) {
 			_instance = new McConnection();
