@@ -18,14 +18,14 @@ public class MMSMessageHandler extends AbstractMessageHandler {
 	 */
 	public MMSMessageHandler(String target, Message message) {
 		super(target, message);
-		// TODO Auto-generated constructor stub
+		logger.debug("MMSMessage({}) for target {} created", message.id, target);
 	}
 
 	/* (non-Javadoc)
 	 * @see ch.zhaw.i11b.pwork.sem2.server.messagehandlers.AbstractMessageHandler#send()
 	 */
 	public boolean send() {
-		logger.debug("Send MMS to {} with message:\n {}", this.target, this.message.message);
+		logger.warn("Send MMS to {} with message:\n {}", this.target, this.message.message);
 		return true;
 	}
 

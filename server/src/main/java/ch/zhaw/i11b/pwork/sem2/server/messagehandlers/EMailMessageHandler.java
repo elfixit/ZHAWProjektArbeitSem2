@@ -18,13 +18,14 @@ public class EMailMessageHandler extends AbstractMessageHandler {
 	 */
 	public EMailMessageHandler(String target, Message message) {
 		super(target, message);
+		logger.debug("EMailMessage({}) for target {} created", message.id, target);
 	}
 
 	/* (non-Javadoc)
 	 * @see ch.zhaw.i11b.pwork.sem2.server.messagehandlers.AbstractMessageHandler#send()
 	 */
 	public boolean send() {
-		logger.debug("Send EMail to {} with subject:\nMessage from MultiChannel\n message:\n {}", this.target, this.message.message);
+		logger.warn("Send EMail to {} with subject:\nMessage from MultiChannel\n message:\n {}", this.target, this.message.message);
 		return true;
 	}
 
