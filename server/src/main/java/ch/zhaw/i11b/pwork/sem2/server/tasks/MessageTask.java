@@ -1,9 +1,10 @@
-package ch.zhaw.i11b.pwork.sem2.server;
+package ch.zhaw.i11b.pwork.sem2.server.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 
+import ch.zhaw.i11b.pwork.sem2.server.MessageHandlerFactory;
 import ch.zhaw.i11b.pwork.sem2.server.controller.MessageController;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.IMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.beans.Message;

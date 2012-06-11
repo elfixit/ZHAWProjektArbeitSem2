@@ -1,7 +1,8 @@
 package ch.zhaw.i11b.pwork.sem2.server.controller;
 
 import ch.zhaw.i11b.pwork.sem2.server.Main;
-import ch.zhaw.i11b.pwork.sem2.server.MessageTask;
+import ch.zhaw.i11b.pwork.sem2.server.tasks.MessageTask;
+import ch.zhaw.i11b.pwork.sem2.server.tasks.ReminderTask;
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.beans.Messages;
 
