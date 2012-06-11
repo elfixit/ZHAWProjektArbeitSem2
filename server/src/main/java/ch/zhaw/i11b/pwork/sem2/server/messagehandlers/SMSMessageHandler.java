@@ -21,14 +21,14 @@ public class SMSMessageHandler extends AbstractMessageHandler {
 	 */
 	public SMSMessageHandler(String target, Message message) {
 		super(target, message);
-		// TODO Auto-generated constructor stub
+		logger.debug("SMSMessage({}) for target {} created", message.id, target);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public boolean send() {
-		
+		logger.debug("Send SMS to {} with message:\n {}", this.target, this.message.message);
 		return true;
 	}
 

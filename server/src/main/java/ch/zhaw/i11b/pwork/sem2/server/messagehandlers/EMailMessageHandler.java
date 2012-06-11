@@ -24,7 +24,7 @@ public class EMailMessageHandler extends AbstractMessageHandler {
 	 * @see ch.zhaw.i11b.pwork.sem2.server.messagehandlers.AbstractMessageHandler#send()
 	 */
 	public boolean send() {
-		// TODO Auto-generated method stub
+		logger.debug("Send EMail to {} with subject:\nMessage from MultiChannel\n message:\n {}", this.target, this.message.message);
 		return true;
 	}
 

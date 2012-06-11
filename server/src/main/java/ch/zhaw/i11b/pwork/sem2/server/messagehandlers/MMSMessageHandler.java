@@ -25,7 +25,7 @@ public class MMSMessageHandler extends AbstractMessageHandler {
 	 * @see ch.zhaw.i11b.pwork.sem2.server.messagehandlers.AbstractMessageHandler#send()
 	 */
 	public boolean send() {
-		// TODO Auto-generated method stub
+		logger.debug("Send MMS to {} with message:\n {}", this.target, this.message.message);
 		return true;
 	}
 
