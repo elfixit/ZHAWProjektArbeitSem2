@@ -1,5 +1,8 @@
 package ch.zhaw.i11b.pwork.sem2.server.messagehandlers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 
 /**
@@ -8,7 +11,7 @@ import ch.zhaw.i11b.pwork.sem2.beans.Message;
  */
 public class PrintMessageHandler extends AbstractMessageHandler {
 
-	
+	private static final Logger logger = LoggerFactory.getLogger(PrintMessageHandler.class);
 	/**
 	 * @param target
 	 * @param message
