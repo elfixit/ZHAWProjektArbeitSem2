@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -50,7 +51,7 @@ public class MessageController {
 	 * @uml.associationEnd  
 	 */
 	protected Messages messages = new Messages();
-	protected HashMap<String, MessageTask> openTasks = new HashMap<String, MessageTask>();
+	protected HashMap<String, TimerTask> openTasks = new HashMap<String, TimerTask>();
 	protected HashMap<String, Timer> timers = new HashMap<String, Timer>();
 	//public Interface
 	/**
@@ -69,11 +70,8 @@ public class MessageController {
 		timer.schedule(task, msg.sendtime);
 		if (msg.reminder) {
 			logger.debug("create reminder Message");
-			MessageTask reminderTask = new MessageTask(msg, true);
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(msg.sendtime);
-			cal.set(Calendar.HOUR, -1);
-			timer.schedule(reminderTask, cal.getTime());
+			ReminderTask reminderTask = new ReminderTask(msg);
+			timer.schedule(reminderTask, reminderTask.getTime());
 			this.openTasks.put("reminder_"+msg.id, reminderTask);
 			logger.debug("added reminder to MessageQueue");
 		}

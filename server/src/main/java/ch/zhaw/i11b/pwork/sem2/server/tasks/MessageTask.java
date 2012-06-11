@@ -21,30 +21,17 @@ public class MessageTask extends TimerTask {
 	 * @uml.associationEnd  
 	 */
 	protected Message msg = null;
-	protected boolean is_reminder = false;
 	
 	/**
 	 * @param msg
 	 * @param reminder
 	 */
-	public MessageTask(Message msg, boolean reminder) {
-		this.msg = msg;
-		this.is_reminder = reminder;
-		MessageHandlerFactory factory = MessageHandlerFactory.instance();
-		if (reminder) {
-			
-		} else {
-			for (Target target : msg.targets) {
-				this.messageHandlers.add(factory.getMessageHandler(target, msg));
-			}
-		}
-	}
-	
-	/**
-	 * @param msg
-	 */
 	public MessageTask(Message msg) {
-		this(msg, false);
+		this.msg = msg;
+		MessageHandlerFactory factory = MessageHandlerFactory.instance();
+		for (Target target : msg.targets) {
+			this.messageHandlers.add(factory.getMessageHandler(target, msg));
+		}
 	}
 	
 	/**
@@ -52,13 +39,6 @@ public class MessageTask extends TimerTask {
 	 */
 	public Message getMessage() {
 		return this.msg;
-	}
-	
-	/**
-	 * @return
-	 */
-	public boolean isReminder() {
-		return this.is_reminder;
 	}
 	
 	/* (non-Javadoc)
