@@ -100,6 +100,14 @@ public class MCLtools {
 			} else return false;
 		
 		}
+		else if(in.matches("m")){
+			in = readNr();
+			if(!(in.isEmpty())){	
+				m.targets.add(new Target("MMS", in));
+				return true;
+			} else return false;
+		
+		}
 		else if(in.matches("p")){
 			in = readPrntName();
 			if(!(in.isEmpty())){	
@@ -293,7 +301,6 @@ public class MCLtools {
 		prntDate(m);
 		prntRem(m);
 		prntMess(m);
-		IO.mcBr();
 		prntTargets(m);
 	}
 }

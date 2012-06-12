@@ -110,9 +110,12 @@ public class Menu {
 			}
 			else if(in.matches("s")){
 				IO.mcAccpt(mainO.get(in));
-				if(McConnection.instance().sendMess(mess)){
-					break;
-				}
+				McConnection mcC = McConnection.instance();
+				if(mcC.testServer()){
+					if(mcC.sendMess(mess)){
+						break;
+					}
+				} 
 			}
 			else if(in.matches("n")){
 				IO.mcAccpt(mainO.get(in));
@@ -120,7 +123,7 @@ public class Menu {
 			}
 			else if(in.matches("x")){
 				IO.mcAccpt(mainO.get(in));
-				MCLtools.initMess(mess);
+				//MCLtools.initMess(mess);
 				break;
 			}
 			else if(in.matches("q")){
@@ -142,52 +145,64 @@ public class Menu {
 	 */
 	protected static void statusMenu(){
 		// get input:
+		McConnection McC = McConnection.instance();
+		if(!(McC.testServer())){
+			return;
+		}
 		for(String in = ioMenu("status");; in = ioMenu("status")){
 			
 			if(in.matches("f")){
 				IO.mcAccpt(statusO.get(in));
-				List<Message> ml = McConnection.instance().getFinished();
+				List<Message> ml = McC.getFinished();
 				if(ml.isEmpty()){
 					IO.mcRespond("No finished messages");
 				}
 				else{
 					for(Message m : ml){
+						IO.mcBr();
+						IO.mcInfo("Message id:"+m.id);
 						MCLtools.prntMcMess(m);
 					}
 				}
 			}
 			else if(in.matches("e")){
 				IO.mcAccpt(statusO.get(in));
-				List<Message> ml = McConnection.instance().getFailed();
+				List<Message> ml = McC.getFailed();
 				if(ml.isEmpty()){
 					IO.mcRespond("No failed messages");
 				}
 				else{
 					for(Message m : ml){
+						IO.mcBr();
+						IO.mcInfo("Message id:"+m.id);
 						MCLtools.prntMcMess(m);
 					}
 				}
 			}
 			else if(in.matches("o")){	
 				IO.mcAccpt(statusO.get(in));
-				List<Message> ml = McConnection.instance().getOpened();
+				List<Message> ml = McC.getOpened();
 				if(ml.isEmpty()){
 					IO.mcRespond("No open messages");
 				}
 				else{
 					for(Message m : ml){
+						IO.mcBr();
+						IO.mcInfo("Message id:"+m.id);
 						MCLtools.prntMcMess(m);
 					}
 				}
 			}
 			else if(in.matches("c")){	
 				IO.mcAccpt(statusO.get(in));
-				List<Message> ml = McConnection.instance().getCancelled();
+				List<Message> ml = McC.getCancelled();
 				if(ml.isEmpty()){
 					IO.mcRespond("No cancelled messages");
 				}
 				else{
 					for(Message m : ml){
+						IO.mcBr();
+						IO.mcInfo("Message id:"+m.id);
 						MCLtools.prntMcMess(m);
 					}
 				}
@@ -209,7 +224,7 @@ public class Menu {
 		
 		if(menu.matches("main")){
 			IO.mcBr();
-			IO.mcInfo("Main Menu");
+			IO.mcInfo("Message Menu");
 			for(String str : mainO.values()){
 				IO.mcRespond(str);
 			}
@@ -218,7 +233,7 @@ public class Menu {
 		
 		else if(menu.matches("null")){
 			IO.mcBr();
-			IO.mcInfo("Menu");
+			IO.mcInfo("Start Menu");
 			for(String str : nullO.values()){
 				IO.mcRespond(str);
 			}

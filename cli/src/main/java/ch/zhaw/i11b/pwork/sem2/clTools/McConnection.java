@@ -53,7 +53,7 @@ public class McConnection {
 	 */
 	protected boolean sendMess(Message m){
 		if(m.from.isEmpty()){
-			IO.mcNotify("Cannot send message, sender miising");
+			IO.mcNotify("Cannot send message, sender missing");
 			return false;
 		}
 		else if(m.message.isEmpty()){
@@ -80,6 +80,18 @@ public class McConnection {
 			}
 			return succ;
 			
+		}
+	}
+	
+	public Boolean testServer(){
+		try{
+			r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Message.class);
+			return true;
+			
+		}catch (Exception e){
+			IO.mcNotify("Could not connect to server.");
+			// e.printStackTrace();
+			return false;
 		}
 	}
 
