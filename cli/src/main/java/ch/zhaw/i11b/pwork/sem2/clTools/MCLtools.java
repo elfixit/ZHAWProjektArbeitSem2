@@ -84,7 +84,7 @@ public class MCLtools {
 	 * Add target
 	 */
 	protected static boolean addTarget(Message m){
-		String in = IO.getStdin("To you want to add SMS [s], MMS [m] or email [e]?");
+		String in = IO.getStdin("To you want to add SMS [s], MMS [m], email [e] or printer [p]?");
 		if(in.matches("e")){
 			in = readEmail();
 			if(!(in.isEmpty())){
@@ -100,10 +100,10 @@ public class MCLtools {
 			} else return false;
 		
 		}
-		else if(in.matches("m")){
-			in = readNr();
+		else if(in.matches("p")){
+			in = readPrntName();
 			if(!(in.isEmpty())){	
-				m.targets.add(new Target("MMS", in));
+				m.targets.add(new Target("Print", in));
 				return true;
 			} else return false;
 		}
@@ -169,6 +169,18 @@ public class MCLtools {
 		}
 		
 		return "";
+	}
+	
+	private static String readPrntName(){
+		String pn = IO.getStdin("Enter the name of the printer:");
+		if(Valid.alphaNumValid(pn)){
+			return pn;
+		}
+		else {
+			IO.mcInfo("This is not a alphanumeric name. Not Printer added.");
+			IO.mcBr();
+			return "";
+		}
 	}
 	
 	/**

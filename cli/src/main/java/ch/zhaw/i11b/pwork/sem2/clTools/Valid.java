@@ -35,6 +35,16 @@ public class Valid {
 		}
 	}
 	
+	public static boolean alphaNumValid(String pn){
+		boolean b = true;
+		for(int i=0; i<pn.length(); i++){
+			if(!Character.isLetterOrDigit(pn.charAt(i))){
+				b = false;
+				break;
+			}
+		}
+		return b;
+	}
 	public static String phoneValid(String phoneNumber, String countryCode){
 		
 		PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
