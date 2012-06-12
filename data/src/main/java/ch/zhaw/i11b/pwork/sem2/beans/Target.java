@@ -4,6 +4,12 @@ package ch.zhaw.i11b.pwork.sem2.beans;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
 
+/**
+ * The Target is used to define one target of a Message 
+ * 
+ * @author oups
+ *
+ */
 @XmlRootElement
 public class Target {
 	@XmlElement(required = true)

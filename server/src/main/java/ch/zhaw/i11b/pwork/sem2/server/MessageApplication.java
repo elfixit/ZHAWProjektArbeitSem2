@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Application for javax.ws.rs
+ * makes shure that JAXBContextResolver and MessagingService gets scanned.
  * @author oups
  *
  */

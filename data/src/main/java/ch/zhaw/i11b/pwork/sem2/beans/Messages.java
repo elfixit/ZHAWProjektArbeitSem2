@@ -7,6 +7,9 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
 
+/**
+ * Kinde of the state of the Server 
+ */
 @XmlRootElement
 public class Messages {
 	@XmlElement(required=true)

@@ -8,6 +8,11 @@ import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 import javax.xml.bind.JAXBContext;
 
+/**
+ * The contextResolver of the JSON De-/Serialisation
+ * @author oups
+ *
+ */
 @Provider
 public final class JAXBContextResolver implements ContextResolver<JAXBContext>{
     private JAXBContext context;
