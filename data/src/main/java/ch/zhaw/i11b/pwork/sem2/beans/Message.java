@@ -8,6 +8,14 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * The Main Message class, defines the client server com and and the Message in the Server.
+ * 
+ * the values need to be public for jaxb. Don't releay get it why..
+ * any way with get and setters.. it doesn't work how it shut.. =(
+ * @author oups
+ *
+ */
 @XmlRootElement
 public class Message {
 	@XmlElement(required=false)

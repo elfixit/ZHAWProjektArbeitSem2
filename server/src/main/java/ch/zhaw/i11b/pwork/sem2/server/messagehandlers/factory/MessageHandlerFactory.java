@@ -1,4 +1,4 @@
-package ch.zhaw.i11b.pwork.sem2.server;
+package ch.zhaw.i11b.pwork.sem2.server.messagehandlers.factory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
