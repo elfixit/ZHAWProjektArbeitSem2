@@ -26,16 +26,23 @@ public class SMSMessageHandler extends AbstractMessageHandler {
 	 */
 	public SMSMessageHandler(String target, Message message) {
 		super(target, message);
-		if (this.message.message.length() > 160) {
-			int parts = (int)this.message.message.length() / 160;
+		int length = this.message.message.length();
+		if (length > 160) {
+			int parts = (int)(this.message.message.length() / 160) + 1;
+			logger.debug("spliting messages in {} parts because length({}) > 160", parts, this.message.message.length());
 			for(int i=0; i < parts; i++) {
-				this.msgs.add(this.message.message.substring(i*160, i*160+160));
+				int start = i*160;
+				int end = start+160;
+				if (end > length) {
+					end = length;
+				}
+				this.msgs.add(this.message.message.substring(start, end));
 			}
 		} else {
 			this.msgs.add(this.message.message);
 		}
-		Object[] params = {message.id, target, this.msgs.size()};
-		logger.debug("SMSMessage({}) for target {} created and splited in {} parts", params);
+		Object[] params = {message.id, target, this.msgs.size(), this.message.message.length()};
+		logger.debug("SMSMessage({}) for target {} created and splited in {} parts original size: {}", params);
 	}
 
 	/**

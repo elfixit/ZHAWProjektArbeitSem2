@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimerTask;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.beans.Target;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.EMailMessageHandler;
@@ -17,6 +20,8 @@ import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.EMailMessageHandler;
  */
 public class ReminderTask extends TimerTask {
 
+	private static final Logger logger = LoggerFactory.getLogger(EMailMessageHandler.class);
+	
 	private Message originalMsg = null;
 	private Message reminderMsg = null;
 	private Date sendTime = null;
@@ -42,8 +47,10 @@ public class ReminderTask extends TimerTask {
 	 */
 	@Override
 	public void run() {
+		logger.warn("Send reminder for msg: {}", this.originalMsg.id);
 		EMailMessageHandler handler = new EMailMessageHandler(this.originalMsg.from, this.reminderMsg, "Reminder Messages from MultiChannel");
 		handler.send();
+		logger.debug("reminder msg send!");
 	}
 
 }
