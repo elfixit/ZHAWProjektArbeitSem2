@@ -6,6 +6,7 @@ import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.EMailMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.MMSMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.PrintMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.SMSMessageHandler;
+import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.factory.MessageHandlerFactory;
 import ch.zhaw.i11b.pwork.sem2.server.resources.*;
 import ch.zhaw.i11b.pwork.sem2.beans.*;
 
