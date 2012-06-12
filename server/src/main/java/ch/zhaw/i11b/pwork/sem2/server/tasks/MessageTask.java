@@ -49,6 +49,9 @@ public class MessageTask extends TimerTask {
 		MessageController controller = null;
 		try {
 			controller = MessageController.Instance();
+			for (IMessageHandler messageHandler: this.messageHandlers) {
+				messageHandler.send();
+			}
 			controller.finishMessage(this.msg);
 		} catch (Throwable e) {
 			if (controller != null)  {

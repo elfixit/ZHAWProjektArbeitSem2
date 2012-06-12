@@ -58,7 +58,7 @@ public class MessageController {
 	 * @param msg
 	 */
 	public synchronized void addMessage(Message msg) {
-		logger.debug("Adding new Message");
+		logger.debug("Adding new Message with Message:\n{}", msg.message);
 		msg.id = UUID.randomUUID().toString();
 		logger.debug("created uuid vor message: {}", msg.id);
 		if (msg.sendtime == null) {
@@ -66,15 +66,16 @@ public class MessageController {
 			logger.debug("set sendtime to now.");
 		}
 		Timer timer = new Timer();
-		MessageTask task = new MessageTask(msg);
-		timer.schedule(task, msg.sendtime);
+		ReminderTask reminderTask = null;
 		if (msg.reminder) {
 			logger.debug("create reminder Message");
-			ReminderTask reminderTask = new ReminderTask(msg);
+			reminderTask = new ReminderTask(msg);
 			timer.schedule(reminderTask, reminderTask.getTime());
 			this.openTasks.put("reminder_"+msg.id, reminderTask);
 			logger.debug("added reminder to MessageQueue");
-		}
+		} 
+		MessageTask task = new MessageTask(msg);
+		timer.schedule(task, msg.sendtime);
 		this.messages.open.add(msg);
 		this.openTasks.put(msg.id, task);
 		this.timers.put(msg.id, timer);

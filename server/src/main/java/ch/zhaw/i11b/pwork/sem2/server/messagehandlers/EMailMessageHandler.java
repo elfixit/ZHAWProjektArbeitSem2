@@ -12,20 +12,28 @@ import ch.zhaw.i11b.pwork.sem2.beans.Message;
 public class EMailMessageHandler extends AbstractMessageHandler {
 	
 	private static final Logger logger = LoggerFactory.getLogger(EMailMessageHandler.class);
+	
+	private String subject = "";
 	/**
 	 * @param target
 	 * @param message
 	 */
 	public EMailMessageHandler(String target, Message message) {
+		this(target, message, "Message from MultiChannel");
+	}
+	
+	public EMailMessageHandler(String target, Message message, String subject) {
 		super(target, message);
-		logger.debug("EMailMessage({}) for target {} created", message.id, target);
+		this.subject = subject;
+		logger.debug("EMailMessage({}) for target {} created", message.id, target);		
 	}
 
 	/* (non-Javadoc)
 	 * @see ch.zhaw.i11b.pwork.sem2.server.messagehandlers.AbstractMessageHandler#send()
 	 */
 	public boolean send() {
-		logger.warn("Send EMail to {} with subject:\nMessage from MultiChannel\n message:\n {}", this.target, this.message.message);
+		Object[] params = {target, this.subject, this.message.message};
+		logger.warn("Send EMail to {} with subject:\n{}\n message:\n {}", params);
 		return true;
 	}
 
