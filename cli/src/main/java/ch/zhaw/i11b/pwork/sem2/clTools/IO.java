@@ -43,7 +43,7 @@ public class IO{
 		IO.mcNotify("Good Bye !");
 	}
 	public static void mcAccpt(String out){
-		mcPrint(" "+ out+"\n");
+		mcPrint(" ->"+ out+"\n");
 		mcBr();
 		
 	}
@@ -56,7 +56,7 @@ public class IO{
 	
 	}
 	public static void mcRespond(String out){
-		mcPrint("  "+ out+"\n");
+		mcPrint("   "+ out+"\n");
 		
 	}
 	public static void mcNotify(String out){
@@ -64,7 +64,7 @@ public class IO{
 
 	}
 	public static void mcInput(){
-		mcPrint("  >");
+		mcPrint("  > ");
 	}
 	public static void mcBr(){
 		mcPrint("\n");

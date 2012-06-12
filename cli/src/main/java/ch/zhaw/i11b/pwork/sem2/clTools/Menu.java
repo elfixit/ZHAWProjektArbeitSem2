@@ -58,7 +58,6 @@ public class Menu {
 	 * start menu when no instance of Message class is available
 	 */
 	protected static boolean nullMenu(){
-		IO.mcBr();
 		// get input:
 		for(String in = ioMenu("null");; in = ioMenu("null")){
 			
@@ -122,6 +121,7 @@ public class Menu {
 			else if(in.matches("x")){
 				IO.mcAccpt(mainO.get(in));
 				MCLtools.initMess(mess);
+				break;
 			}
 			else if(in.matches("q")){
 				IO.mcInfo("quit");
@@ -141,7 +141,6 @@ public class Menu {
 	 *  status menu view finished, failed, canceled or open messages 
 	 */
 	protected static void statusMenu(){
-		IO.mcBr();
 		// get input:
 		for(String in = ioMenu("status");; in = ioMenu("status")){
 			

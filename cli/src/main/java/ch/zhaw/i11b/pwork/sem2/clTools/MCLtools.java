@@ -240,7 +240,7 @@ public class MCLtools {
 			IO.mcNotify("Targets: empty.");
 		}
 		else{
-			IO.mcInfo("Targets");
+			IO.mcInfo("Targets:");
 			prntTargetOfType(m.targets, "Email");
 			prntTargetOfType(m.targets, "SMS");
 			prntTargetOfType(m.targets, "MMS");
@@ -288,10 +288,12 @@ public class MCLtools {
 	 * print all message details to  stdout
 	 */
 	public static void prntMcMess(Message m){
+		IO.mcInfo("Message details:");
 		prntFrom(m);
-		prntMess(m);
-		prntTargets(m);
 		prntDate(m);
 		prntRem(m);
+		prntMess(m);
+		IO.mcBr();
+		prntTargets(m);
 	}
 }
