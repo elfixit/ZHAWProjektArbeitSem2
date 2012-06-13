@@ -19,7 +19,7 @@ public class Messages {
 	@XmlElement(required=true)
 	public List<Message> errors = new ArrayList<Message>();
 	@XmlElement(required=true)
-	public List<Message> cancled = new ArrayList<Message>();
+	public List<Message> canceled = new ArrayList<Message>();
 	
 	public Messages() {} // JAXB needs this
 }

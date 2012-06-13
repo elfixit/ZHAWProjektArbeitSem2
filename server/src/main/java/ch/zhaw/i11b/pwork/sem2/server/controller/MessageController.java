@@ -29,6 +29,10 @@ public class MessageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 	
+	/**
+	 * Singleton Impl.. static Instance funktion
+	 * @return
+	 */
 	static public MessageController Instance() {
 		if (_instance == null) {
 			_instance = new MessageController();
@@ -41,20 +45,30 @@ public class MessageController {
 	 * 
 	 */
 	protected MessageController() {
-		// add a empty message to cancled for debug purpos
-		this.messages.cancled.add(new Message());
+		// add a empty message to canceled for debug purpos
+		this.messages.canceled.add(new Message());
 	}
 	
 	
 	/**
+	 * stores the messages(state) of the controller
 	 * @uml.property  name="messages"
 	 * @uml.associationEnd  
 	 */
 	protected Messages messages = new Messages();
+	/**
+	 * Describes the open tasks.. based on Message id and TimerTasks..
+	 */
 	protected HashMap<String, TimerTask> openTasks = new HashMap<String, TimerTask>();
+	/**
+	 * Describes the open timers, Timers(a set of TimerTasks(MessageTask, ReminderTask))
+	 */
 	protected HashMap<String, Timer> timers = new HashMap<String, Timer>();
+	
 	//public Interface
 	/**
+	 * Adds a message to the "queue" is the most complex method on the controller..
+	 * if you understand this you understand the app.. kisses
 	 * @param msg
 	 */
 	public synchronized void addMessage(Message msg) {
@@ -83,6 +97,8 @@ public class MessageController {
 	}
 	
 	/**
+	 * Kills the Timer of the message.. defined over Message.id
+	 * and removes them from the reference.. 
 	 * @param msg
 	 */
 	protected synchronized void clearMessage(Message msg) {
@@ -118,20 +134,47 @@ public class MessageController {
 	}
 	
 	/**
+	 * Cancels a message
+	 * 
 	 * @param msg
 	 */
 	public synchronized void cancleMessage(Message msg) {
 		this.clearMessage(msg);
-		this.messages.cancled.add(msg);
+		this.messages.canceled.add(msg);
 		logger.debug("message(id:{}) cancled", msg.id);
 	}
 	
 	/**
+	 * returns the Messages object of the Controller, kinde of the state of the controller
 	 * @return
 	 * @uml.property  name="messages"
 	 */
 	public synchronized Messages getMessages() {
 		logger.debug("return all messages..");
 		return this.messages;
+	}
+	
+	/**
+	 * update Messages.. integrates:
+	 * 
+	 *   * All open messages to the queue
+	 *   * adds finished,cancled,errors to the list
+	 * @return
+	 * @uml.property 
+	 */
+	public synchronized boolean loadMessages(Messages msgs) {
+		for (Message msg: msgs.open) {
+			this.addMessage(msg);
+		}
+		for (Message msg: msgs.finished) {
+			this.messages.finished.add(msg);
+		}
+		for (Message msg: msgs.canceled) {
+			this.messages.canceled.add(msg);
+		}
+		for (Message msg: msgs.errors) {
+			this.messages.errors.add(msg);
+		}
+		return true;
 	}
 }

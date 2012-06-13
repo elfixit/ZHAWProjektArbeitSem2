@@ -102,7 +102,7 @@ public class McConnection {
 
 	protected List<Message> getCancelled(){
 			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
-			return ms.cancled;
+			return ms.canceled;
 	}
 
 	protected List<Message> getFinished(){

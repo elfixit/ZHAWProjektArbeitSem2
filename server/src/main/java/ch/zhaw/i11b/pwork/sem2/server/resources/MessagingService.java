@@ -2,6 +2,7 @@ package ch.zhaw.i11b.pwork.sem2.server.resources;
 
 import com.sun.jersey.spi.resource.Singleton;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -44,6 +45,14 @@ public class MessagingService {
 	public synchronized Message sendMessage(Message msg) {
 		this.controller.addMessage(msg);
 		return msg;
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public synchronized Messages updateMessages(Messages msgs) {
+		this.controller.loadMessages(msgs);
+		return this.controller.getMessages();
 	}
 	
 }
