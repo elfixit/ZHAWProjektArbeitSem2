@@ -46,8 +46,8 @@ public class Menu {
 		put("r", "[r] toggle reminder");
 		put("p", "[p] print message details");
 		put("s", "[s] send message");
-		put("x", "[x] discard message");
-		put("q", "[q] quit message menu");
+		put("x", "[x] discard message and exit");
+		//put("q", "[q] quit message menu");
 		put("t", "[t] set test values");
 		}
 	};
@@ -140,10 +140,11 @@ public class Menu {
 				//MCLtools.initMess(mess);
 				break;
 			}
-			else if(in.matches("q")){
+			/*else if(in.matches("q")){
 				IO.mcInfo("quit");
 				break;
 			}
+			*/
 			else if(in.matches("t")){
 				IO.mcAccpt(mainO.get(in));
 				MCLtest.addTestValues(mess);
