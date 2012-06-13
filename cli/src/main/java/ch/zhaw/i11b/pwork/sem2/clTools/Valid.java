@@ -1,6 +1,7 @@
 package ch.zhaw.i11b.pwork.sem2.clTools;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.AddressException;
+import java.util.regex.*;
 import com.google.i18n.phonenumbers.*;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -13,14 +14,17 @@ public class Valid {
 	
 	public static boolean emailValid(String email){
 	
-		boolean result = true;
-		try {
-			InternetAddress emailAdd = new InternetAddress(email);
-			emailAdd.validate();
-		} catch(AddressException ex){
-			result = false;
+		Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$");
+		if(p.matcher(email).matches()){
+			try {
+				InternetAddress emailAdd = new InternetAddress(email);
+				emailAdd.validate();
+				return true;
+			} catch(AddressException ex){
+				return false;
+			}
 		}
-		return result;
+		else return false;
 	}
 	
 	public static String ccValid(String cc){
