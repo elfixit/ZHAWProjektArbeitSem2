@@ -2,7 +2,9 @@ package ch.zhaw.i11b.pwork.sem2.clTools;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -141,7 +143,18 @@ public class MCLtools {
 			m.reminder = false;
 		}
 		else{
-			m.reminder = true;
+			Calendar remTime = Calendar.getInstance(Locale.GERMAN);
+			remTime.setTime(m.sendtime);
+			remTime.add(Calendar.HOUR, -1);
+			if(remTime.after(Calendar.getInstance(Locale.GERMAN))){
+				m.reminder = true;
+				IO.mcInfo("Reminder set to:\t"+remTime.getTime().toString());
+			}
+			else{
+				IO.mcInfo("You can only set a reminder if the send date is set to at least one hour after the current time.");
+				IO.mcRespond("Reminder time is:\t"+remTime.getTime().toString());
+				m.reminder = false;
+			}
 		}
 	}	
 
