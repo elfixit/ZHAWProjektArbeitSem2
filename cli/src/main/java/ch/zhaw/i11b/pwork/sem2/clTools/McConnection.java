@@ -115,4 +115,9 @@ public class McConnection {
 			return ms.open;
 	}
 	
+	protected Messages setMessages(Messages msgs) {
+		ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).post(Messages.class, msgs);
+		return ms;
+	}
+	
 }
