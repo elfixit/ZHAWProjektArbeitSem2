@@ -220,54 +220,66 @@ public class Menu {
 			else if(in.matches("s")){
 				String path = IO.getStdin("enter relative/absolute path to file to save:");
 				File file = new File(path);
-				FileOutputStream fos = null;
-				ObjectOutputStream oos = null;
-				try {
-					fos = new FileOutputStream(file);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(McC.getMessages());
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
+				if (file.exists() | file.getParentFile().isDirectory()) {
+					FileOutputStream fos = null;
+					ObjectOutputStream oos = null;
 					try {
-						oos.close();
-						fos.close();
+						fos = new FileOutputStream(file);
+						oos = new ObjectOutputStream(fos);
+						oos.writeObject(McC.getMessages());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+					} finally {
+						try {
+							oos.close();
+							fos.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
+					IO.mcRespond("Server state saved in: "+file.getAbsolutePath());
+				}
+				else {
+					IO.mcNotify("Invalid file: "+file.getAbsolutePath());
 				}
 			}
 			else if(in.matches("l")){
 				String path = IO.getStdin("enter relative/absolute path to file to load:");
 				File file = new File(path);
-				FileInputStream fis = null;
-				ObjectInputStream ois = null;
-				try {
-					fis = new FileInputStream(file);
-					ois = new ObjectInputStream(fis);
-					McC.setMessages((Messages)ois.readObject());
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
+				if (file.isFile()){
+					FileInputStream fis = null;
+					ObjectInputStream ois = null;
 					try {
-						ois.close();
-						fis.close();
+						fis = new FileInputStream(file);
+						ois = new ObjectInputStream(fis);
+						McC.setMessages((Messages)ois.readObject());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						try {
+							ois.close();
+							fis.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
+					IO.mcRespond("Server status loaded from file: "+file.getAbsolutePath());
+				}
+				else {
+					IO.mcNotify("The File doesn't exist.. Error!");
 				}
 			}
 			else if(in.matches("q")){

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * the values need to be public for jaxb. Don't know why it doesn't work..
  * any way also with get and setters, it doesn't work how it shut.. =(
- * @author oups
+ * @author elfixit
  *
  */
 @XmlRootElement
