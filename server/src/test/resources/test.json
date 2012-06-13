@@ -1,0 +1,27 @@
+{"open":
+	[
+		{
+			"id":"d76f97de-186b-450d-95cd-e71fd8a449bc",
+			"from":"felix@mafix.cc",
+			"message":"Test test with more then 160 Chars, for SMS splitting text.. let's see if it works.. World Domination now.. or never!!Test test with more then 160 Chars, for SMS splitting text.. let's see if it works.. World Domination now.. or never!!Test test with more then 160 Chars, for SMS splitting text.. let's see if it works.. World Domination now.. or never!!Test test with more then 160 Chars, for SMS splitting text.. let's see if it works.. World Domination now.. or never!!",
+			"targets":
+				[
+					{"type":"SMS","location":"+41793421233"},
+					{"type":"Email","location":"suckers@zhaw.ch"}
+				],
+			"sendtime":"2012-06-13T16:22:53.014+02:00",
+			"reminder":false
+		},
+		{
+			"id":"bd78223d-aefe-43b5-9aeb-1ab4d92d3042",
+			"from":"felix@mafix.cc",
+			"message":"World Domination now.. or never..",
+			"targets":
+				[
+					{"type":"Email","location":"irgendwas@marfix.net"},
+					{"type":"Email","location":"suckers@zhaw.ch"}
+				],
+			"sendtime":"2012-06-13T16:22:57.411+02:00",
+			"reminder":false
+		},
+}

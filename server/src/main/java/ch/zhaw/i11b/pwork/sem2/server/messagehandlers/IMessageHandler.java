@@ -1,13 +1,13 @@
 package ch.zhaw.i11b.pwork.sem2.server.messagehandlers;
 
 /**
- * @author oups
+ * @author elfixit
  *
  */
 public interface IMessageHandler {
 	/**
 	 * @return
 	 */
-	public boolean send();
+	boolean send();
 
 }

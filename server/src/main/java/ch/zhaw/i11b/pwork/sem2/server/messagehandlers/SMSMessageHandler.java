@@ -18,8 +18,9 @@ public class SMSMessageHandler extends AbstractMessageHandler {
 	private static final Logger logger = LoggerFactory.getLogger(SMSMessageHandler.class);
 	
 	private List<String> msgs = new ArrayList<String>();
+	
 	/**
-	 * 
+	 * Splits Message in to message parts.. and files up the string list msgs
 	 * @param target
 	 * @param message
 	 */
@@ -51,6 +52,7 @@ public class SMSMessageHandler extends AbstractMessageHandler {
 		for (String msg: this.msgs) {
 			logger.warn("Send SMS to {} with message:\n {}", this.target, msg);
 		}
+		
 		return true;
 	}
 

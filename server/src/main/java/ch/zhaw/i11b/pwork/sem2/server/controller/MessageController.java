@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public class MessageController {
 	//Singleton impl
 	/**
+	 * Singleton Implementation
 	 * @uml.property  name="_instance"
 	 * @uml.associationEnd  
 	 */

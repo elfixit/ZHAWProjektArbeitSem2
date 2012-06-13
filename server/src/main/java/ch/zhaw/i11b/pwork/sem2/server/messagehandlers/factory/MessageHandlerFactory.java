@@ -55,12 +55,12 @@ public class MessageHandlerFactory {
 	 * @param msg
 	 * @return
 	 */
-	public synchronized IMessageHandler getMessageHandler(Target target, Message msg) {
+	public synchronized AbstractMessageHandler getMessageHandler(Target target, Message msg) {
 		try {
 			Class<AbstractMessageHandler> cls = this.getClassForType(target.type);
 			Class[] parameterTypes = {String.class, Message.class};
 			Constructor<AbstractMessageHandler> ct = cls.getConstructor(parameterTypes);
-			return (IMessageHandler) ct.newInstance(target.location, msg);
+			return (AbstractMessageHandler) ct.newInstance(target.location, msg);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -18,10 +18,17 @@ public final class JAXBContextResolver implements ContextResolver<JAXBContext>{
     private JAXBContext context;
     private Class[] types = {Message.class, Messages.class, Target.class};
 
+    /**
+     * create the JAXBContext.. inside..
+     * @throws Exception
+     */
     public JAXBContextResolver() throws Exception {
         this.context = new JSONJAXBContext(JSONConfiguration.natural().build(), types);
     }
 
+    /**
+     * returns the JSONJAXBContext if type is in types..
+     */
     public JAXBContext getContext(Class<?> objectType) {
         for (Class type : this.types) {
             if (type == objectType) {
