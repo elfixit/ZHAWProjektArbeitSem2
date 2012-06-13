@@ -11,22 +11,23 @@ import ch.zhaw.i11b.pwork.sem2.beans.Target;
 
 
 
+
+
 /**
- * @author  oups
- */
-/**
- * @author oups
+ * @author elfixit
  *
  */
 public class MessageHandlerFactory {
 
 	/**
+	 * the singleton instance.. 
 	 * @uml.property  name="_instance"
 	 * @uml.associationEnd  
 	 */
 	static private MessageHandlerFactory _instance = null;
 	
 	/**
+	 * The static Singleton Method.. to get the singleton..
 	 * @return
 	 */
 	static public MessageHandlerFactory instance() {

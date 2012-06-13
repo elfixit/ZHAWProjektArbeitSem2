@@ -5,13 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+
+import com.sun.jersey.api.json.JSONJAXBContext;
+import com.sun.jersey.api.json.JSONMarshaller;
+import com.sun.jersey.api.json.JSONUnmarshaller;
+
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
 import ch.zhaw.i11b.pwork.sem2.beans.Messages;
+import ch.zhaw.i11b.pwork.sem2.beans.config.JAXBContextResolver;
 import ch.zhaw.i11b.pwork.sem2.test.*;
 
 /**
@@ -220,22 +224,26 @@ public class Menu {
 			else if(in.matches("s")){
 				String path = IO.getStdin("enter relative/absolute path to file to save:");
 				File file = new File(path);
+				file = file.getAbsoluteFile();
 				if (file.exists() | file.getParentFile().isDirectory()) {
 					FileOutputStream fos = null;
-					ObjectOutputStream oos = null;
 					try {
-						fos = new FileOutputStream(file);
-						oos = new ObjectOutputStream(fos);
-						oos.writeObject(McC.getMessages());
+						fos = new FileOutputStream(file); 
+						JAXBContextResolver cr = new JAXBContextResolver();
+						Messages msgs = McC.getMessages();
+						JSONMarshaller m = (JSONMarshaller)((JSONJAXBContext)cr.getContext(Messages.class)).createJSONMarshaller();
+						m.marshallToJSON(msgs, fos);
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					} finally {
 						try {
-							oos.close();
 							fos.close();
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -251,13 +259,15 @@ public class Menu {
 			else if(in.matches("l")){
 				String path = IO.getStdin("enter relative/absolute path to file to load:");
 				File file = new File(path);
+				file = file.getAbsoluteFile();
 				if (file.isFile()){
 					FileInputStream fis = null;
-					ObjectInputStream ois = null;
 					try {
 						fis = new FileInputStream(file);
-						ois = new ObjectInputStream(fis);
-						McC.setMessages((Messages)ois.readObject());
+						JAXBContextResolver cr = new JAXBContextResolver();
+						JSONUnmarshaller u = (JSONUnmarshaller)((JSONJAXBContext)cr.getContext(Messages.class)).createJSONUnmarshaller();
+						Messages msgs = (Messages)u.unmarshalFromJSON(fis, Messages.class);
+						McC.setMessages(msgs);
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -267,9 +277,11 @@ public class Menu {
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					} finally {
 						try {
-							ois.close();
 							fis.close();
 						} catch (IOException e) {
 							// TODO Auto-generated catch block

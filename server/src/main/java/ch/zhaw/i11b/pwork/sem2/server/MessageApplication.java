@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Application for javax.ws.rs
- * makes shure that JAXBContextResolver and MessagingService gets scanned.
- * @author oups
+ * Application for (JSR-311)javax.ws.rs
+ * makes sure that JAXBContextResolver and MessagingService gets scanned.
+ * @author elfixit
  *
  */
 @ApplicationPath("resources")
@@ -18,7 +18,7 @@ public class MessageApplication extends PackagesResourceConfig {
 	private Logger log;
 	
 	/**
-	 * 
+	 * The constructor defines the JSR-311 search path.. 
 	 */
 	public MessageApplication() {
 		super("ch.zhaw.i11b.pwork.sem2");
