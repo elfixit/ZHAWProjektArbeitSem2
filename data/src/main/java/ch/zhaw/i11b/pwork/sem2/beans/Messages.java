@@ -1,5 +1,6 @@
 package ch.zhaw.i11b.pwork.sem2.beans;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
  * Kinde of the state of the Server 
  */
 @XmlRootElement
-public class Messages {
+public class Messages implements Serializable {
 	@XmlElement(required=true)
 	public List<Message> finished = new ArrayList<Message>();
 	@XmlElement(required=true)

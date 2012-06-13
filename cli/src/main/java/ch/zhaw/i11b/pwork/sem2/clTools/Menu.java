@@ -1,9 +1,17 @@
 package ch.zhaw.i11b.pwork.sem2.clTools;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
+import ch.zhaw.i11b.pwork.sem2.beans.Messages;
 import ch.zhaw.i11b.pwork.sem2.test.*;
 
 /**
@@ -49,6 +57,8 @@ public class Menu {
 		put("e", "[e] view failed messages");
 		put("o", "[o] view opened messages");
 		put("c", "[c] view canceled messages");
+		put("l", "[l] load server status");
+		put("s", "[s] save server status");
 		put("q", "[q] quit");
 		}
 	};
@@ -204,6 +214,59 @@ public class Menu {
 						IO.mcBr();
 						IO.mcInfo("Message id:"+m.id);
 						MCLtools.prntMcMess(m);
+					}
+				}
+			}
+			else if(in.matches("s")){
+				String path = IO.getStdin("enter relative/absolute path to file to save:");
+				File file = new File(path);
+				FileOutputStream fos = null;
+				ObjectOutputStream oos = null;
+				try {
+					fos = new FileOutputStream(file);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(McC.getMessages());
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					try {
+						oos.close();
+						fos.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			else if(in.matches("l")){
+				String path = IO.getStdin("enter relative/absolute path to file to load:");
+				File file = new File(path);
+				FileInputStream fis = null;
+				ObjectInputStream ois = null;
+				try {
+					fis = new FileInputStream(file);
+					ois = new ObjectInputStream(fis);
+					McC.setMessages((Messages)ois.readObject());
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					try {
+						ois.close();
+						fis.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}

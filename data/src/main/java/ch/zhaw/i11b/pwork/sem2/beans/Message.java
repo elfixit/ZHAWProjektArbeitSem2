@@ -1,5 +1,6 @@
 package ch.zhaw.i11b.pwork.sem2.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class Message {
+public class Message implements Serializable  {
 	@XmlElement(required=false)
 	public String id = null;
 	public String from = "test@test.com";

@@ -94,25 +94,30 @@ public class McConnection {
 			return false;
 		}
 	}
+	
+	protected Messages getMessages() {
+		ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
+		return ms;		
+	}
 
 	protected List<Message> getFailed(){
-			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
-			return ms.errors;
+		this.getMessages();
+		return ms.errors;
 	}
 
 	protected List<Message> getCancelled(){
-			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
-			return ms.canceled;
+		this.getMessages();
+		return ms.canceled;
 	}
 
 	protected List<Message> getFinished(){
-			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
-			return ms.finished;
+		this.getMessages();
+		return ms.finished;
 	}
 
 	protected List<Message> getOpened(){
-			ms = r.path("messages").accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).get(Messages.class);
-			return ms.open;
+		this.getMessages();
+		return ms.open;
 	}
 	
 	protected Messages setMessages(Messages msgs) {
