@@ -197,10 +197,14 @@ public class MCLtools {
 	@SuppressWarnings("finally")
 	private static Date readDate(){
 		Date newDate = new Date();
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy HH:mm");
 		String date = IO.getStdin("Enter date (dd.MM.yy HH:mm):");
 		try{
 			newDate = sdf.parse(date);
+			if(newDate.before(new Date())){				
+				IO.mcNotify("This date has already passed. The message will be sent immetiatly.");
+			}
 		} catch(ParseException e){
 		IO.mcInfo("Not a valid date.");
 			newDate = null;

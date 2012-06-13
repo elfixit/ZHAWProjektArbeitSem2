@@ -14,7 +14,7 @@ public class Valid {
 	
 	public static boolean emailValid(String email){
 	
-		Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$");
+		Pattern p = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}$");
 		if(p.matcher(email).matches()){
 			try {
 				InternetAddress emailAdd = new InternetAddress(email);
@@ -24,7 +24,9 @@ public class Valid {
 				return false;
 			}
 		}
-		else return false;
+		else{
+			return false;
+		}
 	}
 	
 	public static String ccValid(String cc){
