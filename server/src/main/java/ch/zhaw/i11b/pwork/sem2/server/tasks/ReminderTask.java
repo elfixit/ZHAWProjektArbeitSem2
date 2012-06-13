@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.zhaw.i11b.pwork.sem2.beans.Message;
-import ch.zhaw.i11b.pwork.sem2.beans.Target;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.EMailMessageHandler;
 
 /**

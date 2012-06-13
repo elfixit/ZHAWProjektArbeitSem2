@@ -41,7 +41,6 @@
 package ch.zhaw.i11b.pwork.sem2.server;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -56,8 +55,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import org.glassfish.grizzly.http.server.HttpServer;
-
-import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 /**

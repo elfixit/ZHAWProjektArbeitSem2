@@ -7,11 +7,8 @@ import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.MMSMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.PrintMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.SMSMessageHandler;
 import ch.zhaw.i11b.pwork.sem2.server.messagehandlers.factory.MessageHandlerFactory;
-import ch.zhaw.i11b.pwork.sem2.server.resources.*;
-import ch.zhaw.i11b.pwork.sem2.beans.*;
 
 import com.sun.jersey.api.container.grizzly2.GrizzlyServerFactory;
-import com.sun.jersey.api.core.ResourceConfig;
 import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.slf4j.Logger;

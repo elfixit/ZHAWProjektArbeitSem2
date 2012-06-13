@@ -47,6 +47,14 @@ public class MessagingService {
 		return msg;
 	}
 	
+	/**
+	 * update Messages.. integrates:
+	 * 
+	 *   * All open messages to the queue
+	 *   * adds finished,cancled,errors to the list
+	 * @param msgs
+	 * @return
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
