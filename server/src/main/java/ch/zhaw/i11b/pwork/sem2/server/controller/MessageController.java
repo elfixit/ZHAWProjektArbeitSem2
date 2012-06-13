@@ -41,7 +41,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * protected constructore.. used by static Instance()
 	 */
 	protected MessageController() {
 		// add a empty message to canceled for debug purpos
