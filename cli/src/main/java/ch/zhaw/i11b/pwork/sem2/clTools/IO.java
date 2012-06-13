@@ -38,6 +38,9 @@ public class IO{
 
 	public static void mcWelcome(){
 		IO.mcNotify("Welcome to MultiChannel !");
+		IO.mcInfo("OOP project of:");
+		IO.mcInfo("Felix Marthaler, Marcel Brügger, Cristoffel Gehring");
+		IO.mcInfo("Membaz of da I11b crew.");
 	}
 	public static void mcBye(){
 		IO.mcNotify("Good Bye !");
